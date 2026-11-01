@@ -9,6 +9,8 @@ import {
 import { ErrorBoundary } from '@/components/error-boundary';
 import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
+import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import NotFound from '@/pages/not-found';
 import { SiWhatsapp } from 'react-icons/si';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
@@ -473,6 +475,22 @@ function FloatingWhatsApp() {
 }
 
 function Home() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      autoRaf: true,
+      lerp: 0.085,
+      smoothWheel: true,
+      wheelMultiplier: 0.9,
+      syncTouch: true,
+      syncTouchLerp: 0.075,
+      touchInertiaExponent: 1.7,
+      anchors: { offset: -88 },
+      respectReducedMotion: true,
+    });
+
+    return () => lenis.destroy();
+  }, []);
+
   useEffect(() => {
     const title = 'CyberTech — Gestão e cibersegurança do parque de computadores';
     const description = 'Plataforma autogerenciada que unifica monitoramento, inventário, EDR, patches, vulnerabilidades e backup em nuvem. Tecnologia Acronis®.';
