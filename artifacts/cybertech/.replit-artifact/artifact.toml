@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CyberTech"
+description = "Landing page institucional da CyberTech, solução Eratech de gestão e cibersegurança de computadores, com apresentação das funcionalidades, diferenciais, processo e formulário de contato."
+version = "1.0.0"
+id = "artifacts/cybertech"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 18532
+
+[services.development]
+run = "pnpm --filter @workspace/cybertech run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/cybertech", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/cybertech/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18532"
+BASE_PATH = "/"
