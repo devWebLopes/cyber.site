@@ -465,11 +465,9 @@ function FloatingWhatsApp() {
       rel="noopener noreferrer"
       className="floating-whatsapp"
       aria-label="Falar com a CyberTech pelo WhatsApp"
-      title="Falar com a CyberTech pelo WhatsApp"
       data-testid="floating-whatsapp"
     >
-      <SiWhatsapp size={25} aria-hidden="true" />
-      <span className="floating-whatsapp-text">Fale pelo WhatsApp</span>
+      <SiWhatsapp size={28} aria-hidden="true" />
     </a>
   );
 }
