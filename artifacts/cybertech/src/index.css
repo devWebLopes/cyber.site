@@ -579,3 +579,63 @@ h1,h2,h3,h4 { color:#172d49; }
 .differential-intro a.text-blue-300:hover { color:#174c99; }
 .floating-whatsapp { box-shadow:0 10px 28px rgba(25,78,56,.2); }
 .floating-whatsapp:hover { box-shadow:0 14px 32px rgba(25,78,56,.25); }
+
+/* Deep blue horizontal accents */
+.site-header {
+  background:rgba(9,26,50,.96);
+  border-bottom-color:rgba(157,188,231,.2);
+  box-shadow:0 4px 18px rgba(8,25,48,.12);
+}
+.site-header .text-slate-100 { color:#f3f7ff; }
+.site-header .text-blue-300 { color:#9bc4ff; }
+.nav-link { color:#c0cee0; }
+.nav-link:hover { color:#fff; }
+.site-header .mobile-menu {
+  color:#eff6ff;
+  background:#17365e;
+  border-color:#3b5c85;
+}
+.site-header nav[aria-label="Menu móvel"] {
+  background:#0d2340;
+  border-color:#29476c;
+  box-shadow:0 18px 32px rgba(7,20,39,.28);
+}
+.site-header nav[aria-label="Menu móvel"] a:not(.button-primary) {
+  color:#cfdaea;
+  border-color:rgba(177,201,234,.17);
+}
+.site-header nav[aria-label="Menu móvel"] a:not(.button-primary):hover { color:#fff; }
+
+.trust-strip {
+  background:#12345b;
+  border-top-color:#31557d;
+  border-bottom-color:#31557d;
+}
+.trust-item { color:#d2deee; border-color:rgba(190,211,239,.18); }
+.trust-icon { color:#91bdff; }
+
+.feature-cta {
+  border-color:#315783;
+  background:linear-gradient(100deg,#163f6d,#0e2b4e);
+  box-shadow:0 10px 28px rgba(21,54,93,.12);
+}
+.feature-cta p { color:#c4d2e5; }
+.feature-cta p strong { color:#f4f8ff; }
+
+.process-cta {
+  border-color:#315783;
+  background:linear-gradient(100deg,#163f6d,#0e2b4e);
+  box-shadow:0 10px 28px rgba(21,54,93,.12);
+}
+.process-cta p { color:#d0dced; }
+
+.site-footer { background:#0a1d36; border-top-color:#254367; }
+.site-footer .text-slate-100 { color:#f3f7ff; }
+.site-footer .text-blue-300 { color:#9bc4ff; }
+.footer-brand p { color:#becde1; }
+.footer-col h3 { color:#f1f6ff; }
+.footer-col a { color:#b7c8df; }
+.footer-col a:hover { color:#fff; }
+.footer-bottom { border-top-color:#254367; color:#92a8c3; }
+.footer-bottom a { color:#bfd5f5; }
+.footer-bottom a:hover { color:#fff; }
