@@ -30,20 +30,20 @@
 }
 
 :root {
-  --background: 222 47% 6%;
-  --foreground: 210 40% 96%;
-  --border: 220 38% 18%;
-  --input: 220 35% 23%;
-  --card: 222 40% 9%;
-  --card-foreground: 210 40% 96%;
-  --popover: 222 40% 9%;
-  --popover-foreground: 210 40% 96%;
+  --background: 210 40% 98%;
+  --foreground: 218 45% 16%;
+  --border: 214 31% 88%;
+  --input: 214 28% 82%;
+  --card: 0 0% 100%;
+  --card-foreground: 218 45% 16%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 218 45% 16%;
   --primary: 220 100% 59%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 220 32% 14%;
-  --secondary-foreground: 210 40% 96%;
-  --muted: 220 30% 14%;
-  --muted-foreground: 215 20% 66%;
+  --secondary: 213 65% 95%;
+  --secondary-foreground: 218 45% 18%;
+  --muted: 213 40% 94%;
+  --muted-foreground: 215 20% 40%;
   --accent: 199 89% 48%;
   --accent-foreground: 0 0% 100%;
   --destructive: 0 72% 51%;
@@ -55,20 +55,20 @@
 }
 
 .dark {
-  --background: 222 47% 6%;
-  --foreground: 210 40% 96%;
-  --border: 220 38% 18%;
-  --input: 220 35% 23%;
-  --card: 222 40% 9%;
-  --card-foreground: 210 40% 96%;
-  --popover: 222 40% 9%;
-  --popover-foreground: 210 40% 96%;
+  --background: 210 40% 98%;
+  --foreground: 218 45% 16%;
+  --border: 214 31% 88%;
+  --input: 214 28% 82%;
+  --card: 0 0% 100%;
+  --card-foreground: 218 45% 16%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 218 45% 16%;
   --primary: 220 100% 59%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 220 32% 14%;
-  --secondary-foreground: 210 40% 96%;
-  --muted: 220 30% 14%;
-  --muted-foreground: 215 20% 66%;
+  --secondary: 213 65% 95%;
+  --secondary-foreground: 218 45% 18%;
+  --muted: 213 40% 94%;
+  --muted-foreground: 215 20% 40%;
   --accent: 199 89% 48%;
   --accent-foreground: 0 0% 100%;
   --destructive: 0 72% 51%;
@@ -401,3 +401,181 @@
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
 }
+
+/* Light blue theme */
+html { background:#f4f7fc; }
+body { color:#172d49; background-color:#f4f7fc; }
+h1,h2,h3,h4 { color:#172d49; }
+
+.eyebrow { color:#3974b9; }
+.section-heading p,.illustration-copy p,.contact-copy > p { color:#526780; }
+.grid-bg {
+  background-image:linear-gradient(rgba(68,117,181,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(68,117,181,.055) 1px,transparent 1px);
+}
+
+.site-header {
+  background:rgba(248,251,255,.88);
+  border-bottom-color:rgba(57,91,137,.16);
+  box-shadow:0 3px 18px rgba(30,64,109,.04);
+}
+.site-header .text-slate-100 { color:#17324f; }
+.site-header .text-blue-300 { color:#3977d5; }
+.nav-link { color:#536982; }
+.nav-link:hover { color:#225ec0; }
+.site-header .mobile-menu {
+  color:#17324f;
+  background:#edf3fb;
+  border-color:#cfdaea;
+}
+.site-header nav[aria-label="Menu móvel"] {
+  background:#f8fbff;
+  border-color:#d7e2f0;
+}
+.site-header nav[aria-label="Menu móvel"] a:not(.button-primary) {
+  color:#536982;
+  border-color:#dce5f0;
+}
+.site-header nav[aria-label="Menu móvel"] a:not(.button-primary):hover { color:#225ec0; }
+
+.button-quiet {
+  color:#2c4562;
+  background:rgba(255,255,255,.76);
+  border-color:#d0dced;
+}
+.button-quiet:hover { background:#fff; border-color:#9bb8df; }
+
+.hero {
+  background:radial-gradient(ellipse at 76% 43%,rgba(47,107,255,.12),transparent 36%),linear-gradient(180deg,#edf5ff 0%,#f7faff 100%);
+}
+.hero:after {
+  opacity:.35;
+  background:radial-gradient(ellipse at 86% 50%,transparent 0%,rgba(238,245,255,.12) 49%,#f7faff 78%);
+}
+.hero h1 span { color:#3174e8; }
+.hero-copy { color:#4d627d; }
+.hero .text-slate-400 { color:#5a6f89; }
+.hero .text-slate-500 { color:#7387a1; }
+.hero .text-slate-600 { color:#7488a1; }
+.hero-orbit { border-color:rgba(58,120,218,.2); box-shadow:0 0 95px rgba(41,105,243,.08),inset 0 0 75px rgba(41,105,243,.04); }
+.hero-orbit:before,.hero-orbit:after { border-color:rgba(58,120,218,.16); }
+.dashboard {
+  border-color:#cfdded;
+  background:linear-gradient(145deg,rgba(255,255,255,.98),rgba(243,248,255,.98));
+  box-shadow:0 24px 70px rgba(34,66,110,.14),0 0 48px rgba(47,107,255,.08);
+}
+.dashboard:before { border-color:rgba(77,137,218,.16); }
+.dash-top { border-bottom-color:#e1e9f3; }
+.dash-title { color:#203a58; }
+.dash-status { color:#168054; }
+.live-dot { background:#22a873; box-shadow:0 0 10px rgba(34,168,115,.35); }
+.dash-summary strong { color:#183857; }
+.dash-summary span { color:#71849b; }
+.dash-chip { border-color:#d3e2f4; color:#3974bd; background:#f2f7ff; }
+.dash-graph { border-bottom-color:#e2eaf4; background:repeating-linear-gradient(to bottom,transparent 0 28px,#e8eef7 29px 30px); }
+.dash-row { border-bottom-color:#e5ecf5; color:#536984; }
+.dash-row small { color:#8191a5; }
+.floating-note {
+  color:#536982;
+  background:#fff;
+  border-color:#d9e4f1;
+  box-shadow:0 12px 30px rgba(34,66,110,.14);
+}
+.floating-note b { color:#183653; }
+
+.trust-strip { background:#eaf2fc; border-color:#dbe6f3; }
+.trust-item { color:#435b77; border-color:#dce6f2; }
+.trust-icon { color:#3978d4; }
+
+.solutions-section { background:#f7f9fd; }
+.filter-button { color:#536982; border-color:#d4dfed; background:#fff; }
+.filter-button:hover,.filter-button.active { color:#fff; border-color:#2865d9; background:#3475ed; }
+.feature-card {
+  border-color:#dbe4ef;
+  background:linear-gradient(145deg,#fff,#f9fbff);
+  box-shadow:0 8px 24px rgba(40,70,110,.04);
+}
+.feature-card:hover { border-color:#a9c4e8; background:linear-gradient(145deg,#fff,#f2f7ff); }
+.feature-icon { border-color:#d5e5f8; background:#eff6ff; color:#3678d6; }
+.feature-card p { color:#596e87; }
+.pillar-label { color:#3473bd; background:#edf5ff; }
+.pillar-protecao .feature-icon { color:#3e6fce; border-color:#d6e0f7; background:#eef3ff; }
+.pillar-protecao .pillar-label { color:#345fba; background:#edf2ff; }
+.pillar-suporte .feature-icon { color:#7753bd; border-color:#e2d9f4; background:#f5f0ff; }
+.pillar-suporte .pillar-label { color:#704eaf; background:#f3edff; }
+.pillar-recuperacao .feature-icon { color:#18845d; border-color:#cde9dc; background:#eaf8f1; }
+.pillar-recuperacao .pillar-label { color:#18734f; background:#e8f6ee; }
+.feature-cta { border-color:#d3e1f1; background:linear-gradient(100deg,#eaf3ff,#f6f9ff); }
+.feature-cta p { color:#536982; }
+.feature-cta p strong { color:#17324f; }
+
+.differentials { background:#eef4fc; }
+.diff-card,.diff-card:nth-child(3n+1) { border-color:#dbe4ef; background:#fff; }
+.diff-icon { border-color:#d6e4f5; color:#3678d6; background:#eff6ff; }
+.diff-card p { color:#596e87; }
+.acronis-band { border-color:#cbdcf2; background:linear-gradient(110deg,#e7f1ff,#f7faff); }
+.acronis-symbol { color:#3473c7; background:#dceaff; }
+.acronis-band strong { color:#173654; }
+.acronis-band p { color:#536982; }
+
+.results { background:linear-gradient(180deg,#f7faff,#edf4fc); }
+.results:before { border-color:rgba(67,124,226,.13); box-shadow:0 0 0 50px rgba(67,124,226,.035),0 0 0 100px rgba(67,124,226,.025); }
+.metric-card { border-color:#d7e2ef; background:rgba(255,255,255,.88); box-shadow:0 8px 24px rgba(40,70,110,.04); }
+.metric-value { color:#3477df; }
+.metric-card p { color:#536982; }
+.illustration-copy .note { color:#687f99; }
+.control-visual { border-color:#d0ddec; background:linear-gradient(145deg,#fff,#f0f6ff); box-shadow:0 18px 48px rgba(40,70,110,.1); }
+.control-head { border-bottom-color:#dce6f1; color:#27425f; }
+.control-head small { color:#71859d; }
+.control-panel { border-color:#dce5f0; background:#fff; }
+.control-panel h4 { color:#536982; }
+.health-row { color:#586e87; }
+.health-row b { color:#284666; }
+.health-bar { background:#e1eaf5; }
+.risk-tag { border-color:#ead8bd; color:#936122; background:#fff6e8; }
+.risk-tag.safe { color:#18734f; background:#eaf8f1; border-color:#cce8da; }
+.control-foot { color:#71849a; }
+
+.process-section { background:#f2f6fc; }
+.steps:before { background:linear-gradient(90deg,#bfd2ed,#6e9fe3,#bfd2ed); }
+.step-number { border-color:#8db3e7; background:#fff; color:#3473c7; box-shadow:0 0 0 6px #f2f6fc; }
+.step p { color:#536982; }
+.process-cta { border-color:#d6e1ee; background:#fff; }
+.process-cta p { color:#536982; }
+
+.contact-section { background:linear-gradient(180deg,#f5f9ff,#eaf2fc); border-top-color:#dce6f1; }
+.contact-copy > p { color:#536982; }
+.contact-method { border-color:#d5e1ef; background:#fff; }
+.contact-method-icon { color:#3473c7; background:#eaf3ff; }
+.contact-method span { color:#71849b; }
+.contact-method a { color:#1e4269; }
+.contact-form { border-color:#d5e1ef; background:rgba(255,255,255,.92); box-shadow:0 20px 52px rgba(40,70,110,.09); }
+.field label { color:#405873; }
+.field input,.field select,.field textarea { color:#1d3652; background:#fff; border-color:#cdd9e8; }
+.field input::placeholder,.field textarea::placeholder { color:#8292a6; }
+.field select {
+  color-scheme:light;
+  appearance:none;
+  -webkit-appearance:none;
+  background-color:#fff;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7f97' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-position:right 12px center;
+  background-size:16px;
+  background-repeat:no-repeat;
+  padding-right:38px;
+}
+.field select option { color:#1d3652; background:#fff; }
+.field-error { color:#b42332; }
+.form-note { color:#687c94; }
+.form-status { color:#2d4968; border-color:#ccdcf0; background:#eef5ff; }
+
+.site-footer { background:#e6eef8; border-top-color:#d6e1ee; }
+.footer-brand p { color:#536982; }
+.footer-col h3 { color:#203b59; }
+.site-footer .text-slate-100,.contact-method .text-slate-100 { color:#17324f; }
+.footer-col a { color:#536982; }
+.footer-col a:hover,.footer-bottom a { color:#265fb5; }
+.footer-bottom { border-top-color:#d5e0ed; color:#71849a; }
+.differential-intro a.text-blue-300 { color:#2863b9; }
+.differential-intro a.text-blue-300:hover { color:#174c99; }
+.floating-whatsapp { box-shadow:0 10px 28px rgba(25,78,56,.2); }
+.floating-whatsapp:hover { box-shadow:0 14px 32px rgba(25,78,56,.25); }
