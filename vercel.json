@@ -4,20 +4,16 @@
     "api-server": {
       "root": "artifacts/api-server",
       "framework": "express",
-      "buildCommand": "pnpm run build",
-      "entrypoint": "dist/index.mjs"
+      "entrypoint": "src/index.ts"
     },
     "cybertech": {
       "root": "artifacts/cybertech",
       "framework": "vite",
       "buildCommand": "pnpm run build",
-      "outputDirectory": "dist/public"
-    },
-    "mockup-sandbox": {
-      "root": "artifacts/mockup-sandbox",
-      "framework": "vite",
-      "buildCommand": "pnpm run build",
-      "outputDirectory": "dist"
+      "outputDirectory": "dist",
+      "rewrites": [
+        { "source": "/(.*)", "destination": "/index.html" }
+      ]
     }
   },
   "rewrites": [
