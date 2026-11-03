@@ -1,0 +1,1 @@
+- [Direção visual](visual-direction.md) — CyberTech deve equilibrar azul claro, faixas escuras e movimentos confortáveis.

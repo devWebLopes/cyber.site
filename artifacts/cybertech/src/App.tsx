@@ -13,6 +13,7 @@ import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import NotFound from '@/pages/not-found';
 import { SiWhatsapp } from 'react-icons/si';
+import { useComfortMotion } from '@/hooks/use-comfort-motion';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
 const queryClient = new QueryClient();
@@ -473,13 +474,14 @@ function FloatingWhatsApp() {
 }
 
 function Home() {
+  useComfortMotion();
   useEffect(() => {
     const lenis = new Lenis({
       autoRaf: true,
       lerp: 0.085,
       smoothWheel: true,
       wheelMultiplier: 0.9,
-      syncTouch: true,
+      syncTouch: false,
       syncTouchLerp: 0.075,
       touchInertiaExponent: 1.7,
       anchors: { offset: -88 },

@@ -639,3 +639,73 @@ h1,h2,h3,h4 { color:#172d49; }
 .footer-bottom { border-top-color:#254367; color:#92a8c3; }
 .footer-bottom a { color:#bfd5f5; }
 .footer-bottom a:hover { color:#fff; }
+
+/* Comfortable motion: independent reveal translation keeps hover responsive. */
+html.lenis { scroll-behavior:auto; }
+.scroll-reveal {
+  opacity:0;
+  translate:0 22px;
+  transition:opacity 650ms cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms),
+    translate 750ms cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms),
+    transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease,
+    background-color 280ms ease;
+}
+.scroll-reveal.is-revealed {
+  opacity:1;
+  translate:0 0;
+}
+.scroll-reveal:focus-within {
+  opacity:1;
+  translate:0 0;
+  transition-delay:0ms;
+}
+.feature-card, .diff-card, .metric-card, .step {
+  transition:transform 280ms cubic-bezier(.22,1,.36,1), box-shadow 280ms ease,
+    border-color 280ms ease, background-color 280ms ease;
+}
+.feature-card.scroll-reveal, .diff-card.scroll-reveal,
+.metric-card.scroll-reveal, .step.scroll-reveal {
+  transition:opacity 650ms ease var(--reveal-delay,0ms),
+    translate 750ms cubic-bezier(.22,1,.36,1) var(--reveal-delay,0ms),
+    transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease;
+}
+.button-primary, .button-quiet, .floating-whatsapp {
+  transition:transform 240ms ease, box-shadow 240ms ease,
+    background-color 240ms ease, border-color 240ms ease;
+}
+.button-primary svg, .button-quiet svg, .feature-icon, .diff-icon, .step-number {
+  transition:transform 280ms cubic-bezier(.22,1,.36,1);
+}
+.nav-link { position:relative; }
+.nav-link::after {
+  content:""; position:absolute; left:0; right:0; bottom:-7px;
+  height:2px; border-radius:2px; background:#72b5ff;
+  transform:scaleX(0); transform-origin:left; transition:transform 240ms ease;
+}
+.nav-link:focus-visible::after { transform:scaleX(1); }
+.field input, .field select, .field textarea {
+  transition:border-color 200ms ease, box-shadow 200ms ease;
+}
+@media (hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference) {
+  .feature-card:hover, .diff-card:hover, .metric-card:hover, .step:hover {
+    transform:translateY(-5px);
+    box-shadow:0 14px 28px -16px rgba(31,83,153,.3);
+  }
+  .feature-card:hover .feature-icon, .diff-card:hover .diff-icon {
+    transform:translateY(-2px) rotate(-5deg);
+  }
+  .step:hover .step-number { transform:scale(1.06); }
+  .button-primary:hover, .button-quiet:hover {
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px -10px rgba(36,97,207,.5);
+  }
+  .button-primary:hover svg, .button-quiet:hover svg { transform:translateX(3px); }
+  .nav-link:hover::after { transform:scaleX(1); }
+  .floating-whatsapp:hover { transform:translateY(-3px) scale(1.04); }
+}
+.button-primary:active, .button-quiet:active { transform:scale(.98); }
+@media (prefers-reduced-motion:reduce) {
+  .scroll-reveal { opacity:1; translate:none; }
+  .feature-card, .diff-card, .metric-card, .step,
+  .button-primary, .button-quiet, .floating-whatsapp { transform:none !important; }
+}
