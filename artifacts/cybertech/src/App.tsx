@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import {
   Activity, ArrowRight, Check, ChevronRight, ClipboardList, Cloud, Cpu,
@@ -11,9 +11,13 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
+import { motion } from 'framer-motion';
 import NotFound from '@/pages/not-found';
 import { SiWhatsapp } from 'react-icons/si';
 import { useComfortMotion } from '@/hooks/use-comfort-motion';
+import { useMotionPreferences } from '@/hooks/use-motion-preferences';
+import { useParallax } from '@/hooks/use-parallax';
+import { CustomCursor } from '@/components/custom-cursor';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 
 const queryClient = new QueryClient();
@@ -120,10 +124,12 @@ function Header() {
 }
 
 function DashboardIllustration() {
+  const orbitY = useParallax(26);
+  const dashboardY = useParallax(-14);
   return (
     <div className="hero-visual rise-in rise-delay-2" aria-label="Ilustração conceitual de um painel de gestão de TI">
-      <div className="hero-orbit" aria-hidden="true" />
-      <div className="dashboard">
+      <motion.div className="hero-orbit" style={{ y: orbitY }} aria-hidden="true" />
+      <motion.div className="dashboard" style={{ y: dashboardY }}>
         <div className="dash-top">
           <span className="dash-title">Central de Acompanhamento</span>
           <span className="dash-status"><i className="live-dot" /> ATIVO</span>
@@ -145,7 +151,7 @@ function DashboardIllustration() {
           <div className="dash-row"><span><i className="device-dot" style={{ background: '#e9ad5d' }} />Gestão de vulnerabilidades</span><small>RECURSO</small><b>●</b></div>
           <div className="dash-row"><span><i className="device-dot" style={{ background: '#7994b7' }} />Inventário do parque</span><small>RECURSO</small><b>●</b></div>
         </div>
-      </div>
+      </motion.div>
       <div className="floating-note"><b>Visibilidade em um só lugar</b>Ilustração conceitual, não é captura do produto.</div>
     </div>
   );
@@ -270,8 +276,10 @@ function ControlIllustration() {
 }
 
 function Results() {
+  const orbY = useParallax(40, [0, 700]);
   return (
     <section id="resultados" className="section-pad results">
+      <motion.div className="results-orb" style={{ y: orbY }} aria-hidden="true" />
       <div className="container-wide relative z-[1]">
         <div className="section-heading">
           <span className="eyebrow">Visibilidade que muda a rotina</span>
@@ -296,6 +304,37 @@ function Results() {
 }
 
 function Process() {
+  const prefs = useMotionPreferences();
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [active, setActive] = useState(0);
+  const stepRefs = useRef<(HTMLElement | null)[]>([]);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+
+  const canAnimate = isDesktop && !prefs.reducedMotion;
+
+  useEffect(() => {
+    if (!canAnimate) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const index = stepRefs.current.indexOf(entry.target as HTMLElement);
+          if (index >= 0) setActive(index);
+        });
+      },
+      { rootMargin: '-42% 0px -42% 0px', threshold: 0 }
+    );
+    stepRefs.current.forEach((element) => element && observer.observe(element));
+    return () => observer.disconnect();
+  }, [canAnimate]);
+
   return (
     <section id="processo" className="section-pad process-section">
       <div className="container-wide">
@@ -304,14 +343,32 @@ function Process() {
           <h2>Como funciona</h2>
           <p>Do diagnóstico ao controle completo, em 4 etapas.</p>
         </div>
-        <div className="steps">
-          {steps.map((step, index) => (
-            <article className="step" key={step.title}>
-              <span className="step-number">0{index + 1}</span>
-              <h3>{step.title}</h3>
-              <p>{step.text}</p>
-            </article>
-          ))}
+        <div className={canAnimate ? 'process-story' : 'process-steps-plain'}>
+          <div className={canAnimate ? 'process-step-list' : 'steps'}>
+            {steps.map((step, index) => (
+              <article
+                className={`step ${canAnimate && index === active ? 'is-active' : ''}`}
+                key={step.title}
+                ref={(element) => {
+                  stepRefs.current[index] = element;
+                }}
+              >
+                <span className="step-number">0{index + 1}</span>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </article>
+            ))}
+          </div>
+          {canAnimate && (
+            <aside className="process-panel" aria-live="polite" aria-label="Etapa ativa do processo">
+              <span className="process-progress">{active + 1}/4</span>
+              <div className="process-progress-bar" role="progressbar" aria-valuenow={active + 1} aria-valuemin={1} aria-valuemax={4} aria-label="Progresso do processo">
+                <i style={{ width: `${(active + 1) * 25}%` }} />
+              </div>
+              <h3>{steps[active].title}</h3>
+              <p>{steps[active].text}</p>
+            </aside>
+          )}
         </div>
         <div className="process-cta"><p>Sem compromisso. No seu ritmo, com seu time no controle.</p><a href="#contato" className="button-primary" data-testid="link-comecar-agora">Começar agora <ArrowRight size={14} /></a></div>
       </div>
@@ -563,6 +620,7 @@ function App() {
           <Router />
         </WouterRouter>
         <Toaster />
+        <CustomCursor />
       </TooltipProvider>
     </QueryClientProvider>
   );

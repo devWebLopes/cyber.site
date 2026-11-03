@@ -1,0 +1,9 @@
+quero que crie um prd para colocar esses efeitos:
+ Parallax e Rolagem Dinâmica
+Efeitos de Cursor Personalizados
+Animações Sincronizadas com o Scroll (Scrollytelling)
+
+
+
+
+crie um prd,com as tasks utilizando os melhores agentes, se precisar insatalra skills pode instalr
